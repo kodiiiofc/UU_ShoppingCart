@@ -16,10 +16,13 @@ class MyListAdapter(private val context: Context, private val itemList: List<Ite
         if (view == null) {
             view = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false)
         }
+
+        val idTV = view?.findViewById<TextView>(R.id.tv_id)
         val nameTV = view?.findViewById<TextView>(R.id.tv_name)
         val weightTV = view?.findViewById<TextView>(R.id.tv_weight)
         val priceTV = view?.findViewById<TextView>(R.id.tv_price)
 
+        idTV?.text = item?.itemID.toString()
         nameTV?.text = item?.itemName
         weightTV?.text = item?.itemWeight.toString()
         priceTV?.text = item?.itemPrice.toString()

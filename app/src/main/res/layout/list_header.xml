@@ -9,9 +9,26 @@
     <TextView
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:id="@+id/tv_id"
+        android:layout_weight="1"
+        android:text="@string/list_header_tv_id"
+        android:padding="@dimen/padding_main"
+        android:textStyle="normal"
+        android:gravity="center"
+        />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:id="@+id/tv_name"
         android:layout_weight="3"
-        android:text="Наименование"
+        android:text="@string/list_header_tv_name"
         android:padding="@dimen/padding_main"
         android:textStyle="normal"
         android:gravity="center"
@@ -28,7 +45,7 @@
         android:layout_height="match_parent"
         android:id="@+id/tv_weight"
         android:layout_weight="1"
-        android:text="Вес, кг"
+        android:text="@string/list_header_tv_weight"
         android:padding="@dimen/padding_main"
         android:textStyle="normal"
         android:gravity="center"
@@ -45,7 +62,7 @@
         android:layout_height="match_parent"
         android:id="@+id/tv_price"
         android:layout_weight="1"
-        android:text="Цена, руб."
+        android:text="@string/list_header_tv_price"
         android:padding="@dimen/padding_main"
         android:textStyle="normal"
         android:gravity="center"

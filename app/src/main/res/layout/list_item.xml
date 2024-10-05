@@ -7,6 +7,23 @@
     <TextView
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:id="@+id/tv_id"
+        android:layout_weight="1"
+        android:text="ID"
+        android:padding="@dimen/padding_main"
+        android:textStyle="normal"
+        android:gravity="center"
+        />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:id="@+id/tv_name"
         android:layout_weight="3"
         android:text="Здесь будет наименование товара"

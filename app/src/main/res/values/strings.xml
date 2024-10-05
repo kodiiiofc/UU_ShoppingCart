@@ -1,8 +1,14 @@
 <resources>
     <string name="app_name">Корзина покупок</string>
     <string name="menu_exit">Выйти</string>
-    <string name="et_name">Введите наименование покупки</string>
+    <string name="et_name">Наименование товара</string>
     <string name="et_weight">Вес, кг</string>
     <string name="et_price">Цена, руб.</string>
     <string name="btn_save">Сохранить</string>
+    <string name="list_header_tv_id">ID</string>
+    <string name="list_header_tv_name">Наименование</string>
+    <string name="list_header_tv_weight">Вес, кг</string>
+    <string name="list_header_tv_price">Цена, руб.</string>
+    <string name="et_id">ID</string>
+    <string name="btn_remove_db">Удалить базу данных</string>
 </resources>

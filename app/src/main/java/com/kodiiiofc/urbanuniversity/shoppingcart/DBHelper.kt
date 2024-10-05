@@ -12,7 +12,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
 
     companion object {
         private val DATABASE_NAME = "SHOPPING_CART_DATABASE"
-        private val DATABASE_VERSION = 1
+        private val DATABASE_VERSION = 2
         private val TABLE_NAME = "shopping_cart_table"
         private val KEY_ID = "id"
         private val KEY_NAME = "name"
@@ -33,6 +33,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     fun addItem(item: Item) {
         val db = this.writableDatabase
         val contentValues = ContentValues()
+        contentValues.put(KEY_ID, item.itemID)
         contentValues.put(KEY_NAME, item.itemName)
         contentValues.put(KEY_WEIGHT, item.itemWeight)
         contentValues.put(KEY_PRICE, item.itemPrice)
@@ -52,15 +53,17 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
             db.execSQL(selectQuery)
             return itemList
         }
+        var itemID: Int
         var itemName: String
         var itemWeight: Double
         var itemPrice: Double
         if (cursor.moveToFirst()) {
             do {
+                itemID = cursor.getInt(cursor.getColumnIndex(KEY_ID))
                 itemName = cursor.getString(cursor.getColumnIndex(KEY_NAME))
                 itemWeight = cursor.getDouble(cursor.getColumnIndex(KEY_WEIGHT))
                 itemPrice = cursor.getDouble(cursor.getColumnIndex(KEY_PRICE))
-                val item = Item(itemName, itemWeight, itemPrice)
+                val item = Item(itemID, itemName, itemWeight, itemPrice)
                 itemList.add(item)
             } while (cursor.moveToNext())
         }
@@ -70,18 +73,23 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     fun updateItem(item: Item) {
         val db = this.writableDatabase
         val contentValues = ContentValues()
+        contentValues.put(KEY_ID, item.itemID)
         contentValues.put(KEY_NAME, item.itemName)
         contentValues.put(KEY_WEIGHT, item.itemWeight)
         contentValues.put(KEY_PRICE, item.itemPrice)
-        db.update(TABLE_NAME, contentValues, "KEY_NAME = ${item.itemName}", null)
+        db.update(TABLE_NAME, contentValues, "$KEY_ID = ${item.itemID}", null)
         db.close()
     }
 
     fun deleteItem(item: Item) {
         val db = this.writableDatabase
-        val contentValues = ContentValues()
-        contentValues.put(KEY_NAME, item.itemName)
-        db.delete(TABLE_NAME,"KEY_NAME = ${item.itemName}", null)
+        db.delete(TABLE_NAME,"$KEY_ID = ${item.itemID}", null)
+        db.close()
+    }
+
+    fun removeAll() {
+        val db = this.writableDatabase
+        db.delete(TABLE_NAME, null, null)
         db.close()
     }
 
