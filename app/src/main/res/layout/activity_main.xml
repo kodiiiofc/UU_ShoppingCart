@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/status_bar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/status_bar"
+        app:title="@string/app_name"
+        android:id="@+id/toolbar"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="@dimen/padding_big">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_of_et"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/et_name"
+            android:hint="@string/et_name"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_weight_price"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_of_et"
+            app:layout_constraintTop_toBottomOf="@id/et_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:id="@+id/et_weight"
+                android:hint="@string/et_weight"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:layout_marginEnd="@dimen/margin_small"
+                />
+
+            <EditText
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:id="@+id/et_price"
+                android:hint="@string/et_price"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:layout_marginStart="@dimen/margin_small"
+                />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/ll_weight_price"
+            android:layout_marginTop="@dimen/margin_big"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/btn_save"
+            android:text="@string/btn_save"/>
+
+        <LinearLayout
+            android:id="@+id/ll_list_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_big"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_save"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                />
+
+        <include layout="@layout/list_header"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                />
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lv_items"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_list_header"
+            tools:listitem="@layout/list_item"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

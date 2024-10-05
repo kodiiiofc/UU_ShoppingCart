@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Корзина покупок</string>
+    <string name="menu_exit">Выйти</string>
+    <string name="et_name">Введите наименование покупки</string>
+    <string name="et_weight">Вес, кг</string>
+    <string name="et_price">Цена, руб.</string>
+    <string name="btn_save">Сохранить</string>
+</resources>
